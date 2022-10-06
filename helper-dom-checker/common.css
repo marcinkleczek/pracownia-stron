@@ -15,9 +15,18 @@ section {
     display: flex;
 }
 .col-6 {
-    width: 40%;
+    width: 50%;
+}
+.clearfix {
+    display: block;
+    content: "";
+    clear: both;
 }
 
+main > img {
+    border: 1px dotted #333;
+    padding: 5px;
+}
 
 /* Results */
 .all-ok {
@@ -60,4 +69,18 @@ section {
 }
 #results:hover .success {
     display: list-item;
+}
+.instructions:hover {
+    color: #28af64;
+    box-shadow: 6px 6px #28af64;
+    transition: 800ms ease-in;
+}
+.instructions {
+    /*transition-delay: 3000ms;*/
+    /*transition: 800ms ease-in;*/
+    color: #999;
+    width: 90%;
+    box-shadow: 6px 6px #aaa;
+    background-color: #eee;
+    padding: 10px 30px;
 }
