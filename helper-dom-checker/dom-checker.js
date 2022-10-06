@@ -9,13 +9,13 @@
 let results = null;
 
 function init() {
-    results = document.createElement('ol');
+    results = document.createElement('div');
     results.id = 'results';
     document.body.appendChild(results);
 
     setTimeout(() => {
-        if (0 === document.querySelectorAll('li.warning').length) {
-            results.innerHTML = '<li class="all-ok">Nie znaleziono błędów</li>';
+        if (0 === document.querySelectorAll('div.warning').length) {
+            results.innerHTML = '<div class="all-ok">Nie znaleziono błędów</div>';
         }
     }, 3000);
 
@@ -23,7 +23,7 @@ function init() {
 }
 
 function log(isOk, message) {
-    let p = document.createElement('li');
+    let p = document.createElement('div');
     p.classList.add(isOk ? 'success' : 'warning');
     p.innerHTML = (isOk ? '&#10003;' : '&#10007;') + ' ' + message;
 
@@ -36,7 +36,14 @@ function wrapMessage(additionalMessage) {
 
 function selectorTextContains(selector, text, additionalMessage) {
     let element = document.querySelector(selector);
-    let isOk = element && element.innerText.indexOf(text) >= 0;
+    let isOk = false;
+    if (element) {
+        let elementText = element && element.innerText;
+        if (element && (element.type === 'textarea' || element.type === 'input')) {
+            elementText = element.value;
+        }
+        isOk = elementText.indexOf(text) >= 0;
+    }
     let msg = isOk ? "zawiera" : "nie zawiera";
 
     log(isOk, `${selector} ${msg} ${text} ` + wrapMessage(additionalMessage));
