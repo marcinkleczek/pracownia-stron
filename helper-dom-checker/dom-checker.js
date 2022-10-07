@@ -64,6 +64,22 @@ function selectorDontExits(selector, additionalMessage = "") {
     log(isOk, (isOk ? `${selector} nie istnieje` : `${selector} nie powinien istnieć`) + wrapMessage(additionalMessage) );
 }
 
+function attributeNotEmpty(selector, attribute, additionalMessage = "") {
+    let element = document.querySelector(selector);
+    let isOk = element && element.getAttribute(attribute) !== "" && element.getAttribute(attribute) !== null;
+    let msg = isOk ? 'równa się' : 'nie równa się';
+
+    log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
+}
+
+function innerHTMLnotEmpty(selector, additionalMessage = "") {
+    let element = document.querySelector(selector);
+    let isOk = element && ("" + element.innerHTML).trim() !== "" && element.innerHTML !== null;
+    let msg = isOk ? 'jest pusty' : 'nie jest pusty';
+
+    log(isOk, `Selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
+}
+
 function attributeValue(selector, attribute, value, additionalMessage = "") {
     let element = document.querySelector(selector);
     let isOk = element && element.getAttribute(attribute) === ("" + value);
