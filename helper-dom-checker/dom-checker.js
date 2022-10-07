@@ -34,6 +34,14 @@ function wrapMessage(additionalMessage) {
     return additionalMessage ? ` <strong>${additionalMessage}</strong>` : '';
 }
 
+function selectorContainsTag(selector, tag, additionalMessage) {
+    let element = document.querySelector(selector);
+    let isOk = element && element.innerHTML.indexOf('<'+tag) >= 0;
+    let msg = isOk ? "zawiera" : "nie zawiera";
+
+    log(isOk, `${selector} ${msg} ` + wrapMessage(additionalMessage));
+}
+
 function selectorTextContains(selector, text, additionalMessage) {
     let element = document.querySelector(selector);
     let isOk = false;
