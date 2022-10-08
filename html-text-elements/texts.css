@@ -66,3 +66,30 @@ article > * {
 
 }
 
+blockquote {
+    background-color: #f2f2f2;
+    color: #999;
+    font-style: italic;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+figure blockquote+figcaption {
+    margin-left: 50px;
+}
+
+abbr {
+    color: #28af64;
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+code {
+    white-space: pre;
+}
+data {
+    color: green;
+}
+data::after {
+    color: red;
+    margin-left: 10px;
+    content: attr(value);
+}
