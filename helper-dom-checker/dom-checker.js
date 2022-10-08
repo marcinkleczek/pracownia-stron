@@ -72,6 +72,14 @@ function attributeNotEmpty(selector, attribute, additionalMessage = "") {
     log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
 }
 
+function attributeExists(selector, attribute, additionalMessage = "") {
+    let element = document.querySelector(selector);
+    let isOk = element && element.getAttribute(attribute) !== null;
+    let msg = isOk ? 'istnieje' : 'nie istnieje';
+
+    log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
+}
+
 function innerHTMLnotEmpty(selector, additionalMessage = "") {
     let element = document.querySelector(selector);
     let isOk = element && ("" + element.innerHTML).trim() !== "" && element.innerHTML !== null;
