@@ -25,7 +25,7 @@
         init();
         log(true, "Sprawdzanie tabeli");
         selectorsExists('caption', 'thead', 'table', 'tbody');
-        selectorDontExits('tfoot');
+        selectorDontExists('tfoot');
         selectorExists('tbody td', 42, 'Mamy dokładnie 42 elementy td');
         selectorExists('thead th', 2, 'Mamy dokładnie 2 elementy th w thead');
         selectorExists('tbody th', 6, 'Mamy dokładnie 6 elementów th w tbody');

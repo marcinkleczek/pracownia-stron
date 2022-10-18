@@ -26,8 +26,8 @@
         selectorExists('caption', 1, 'Istnieje opis tabelki');
         selectorExists('table', 1, 'Istnieje jedna tabela');
         selectorExists('tr', 7, 'Ilość wierszy wynosi 7');
-        selectorDontExits('thead', "Ta tabelka nie ma nagłówka");
-        selectorDontExits("tfoot", "Ta tabelka nie ma też stopki");
+        selectorDontExists('thead', "Ta tabelka nie ma nagłówka");
+        selectorDontExists("tfoot", "Ta tabelka nie ma też stopki");
         attributeValue("td:nth-of-type(1)", "colspan", 2, "Pierwszy element łączy dwie kolumny.");
         attributeValue("td:nth-of-type(1)", "rowspan", 2, "Pierwszy element łączy również dwa wiersze.");
         attributeValue("th:nth-of-type(1)", "colspan", 3, "Pierwszy nagłówek zajmuje trzy kolumny.");

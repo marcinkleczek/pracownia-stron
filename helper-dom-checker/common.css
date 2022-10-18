@@ -63,7 +63,9 @@ main > img {
     background-color: #ff94b2;
     color: #bd0a3b;
     padding: 0.2rem 1rem;
+    overflow: hidden;
 }
+
 #results:hover {
     height: 100vh;
 }

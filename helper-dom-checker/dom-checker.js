@@ -28,13 +28,13 @@ function init() {
 function log(isOk, message) {
     let p = document.createElement('div');
     p.classList.add(isOk ? 'success' : 'warning');
-    p.innerHTML = (isOk ? '&#10003;' : '&#10007;') + ' ' + message;
+    p.innerHTML = (isOk ? '&#10003;' : '&#10007;') + '<span class="message">' + message + '</span>';
 
     results.appendChild(p);
 }
 
 function wrapMessage(additionalMessage) {
-    return additionalMessage ? ` <strong>${additionalMessage}</strong>` : '';
+    return additionalMessage ? ` <strong>${additionalMessage}: </strong> ` : '';
 }
 
 function selectorContainsTag(selector, tag, additionalMessage) {
@@ -42,7 +42,7 @@ function selectorContainsTag(selector, tag, additionalMessage) {
     let isOk = element && element.innerHTML.indexOf('<'+tag) >= 0;
     let msg = isOk ? "zawiera" : "nie zawiera";
 
-    log(isOk, `${selector} ${msg} ` + wrapMessage(additionalMessage));
+    log(isOk, wrapMessage(additionalMessage) + `${selector} ${msg} `);
 }
 
 function selectorTextContains(selector, text, additionalMessage) {
@@ -57,14 +57,14 @@ function selectorTextContains(selector, text, additionalMessage) {
     }
     let msg = isOk ? "zawiera" : "nie zawiera";
 
-    log(isOk, `${selector} ${msg} ${text} ` + wrapMessage(additionalMessage));
+    log(isOk, wrapMessage(additionalMessage) + `${selector} ${msg} ${text} `);
 }
 
 function selectorDontExists(selector, additionalMessage = "") {
     let elements = document.querySelectorAll(selector);
     let isOk = elements.length === 0;
 
-    log(isOk, (isOk ? `${selector} nie istnieje` : `${selector} nie powinien istnieć`) + wrapMessage(additionalMessage) );
+    log(isOk, wrapMessage(additionalMessage) + (isOk ? `${selector} nie istnieje` : `${selector} nie powinien istnieć`)  );
 }
 
 function attributeNotEmpty(selector, attribute, additionalMessage = "") {
@@ -72,7 +72,7 @@ function attributeNotEmpty(selector, attribute, additionalMessage = "") {
     let isOk = element && element.getAttribute(attribute) !== "" && element.getAttribute(attribute) !== null;
     let msg = isOk ? 'równa się' : 'nie równa się';
 
-    log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
+    log(isOk, wrapMessage(additionalMessage) + `Atrybut ${attribute} selektora ${selector} ${msg}`);
 }
 
 function attributeExists(selector, attribute, additionalMessage = "") {
@@ -80,14 +80,14 @@ function attributeExists(selector, attribute, additionalMessage = "") {
     let isOk = element && element.getAttribute(attribute) !== null;
     let msg = isOk ? 'istnieje' : 'nie istnieje';
 
-    log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
+    log(isOk, wrapMessage(additionalMessage) + `Atrybut ${attribute} selektora ${selector} ${msg}`);
 }
 function attributeDontExists(selector, attribute, additionalMessage = "") {
     let element = document.querySelector(selector);
     let isOk = element && !element.hasAttribute(attribute);
     let msg = isOk ? 'istnieje' : 'nie istnieje';
 
-    log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
+    log(isOk, wrapMessage(additionalMessage) + `Atrybut ${attribute} selektora ${selector} ${msg}`);
 }
 
 function innerHTMLnotEmpty(selector, additionalMessage = "") {
@@ -95,7 +95,7 @@ function innerHTMLnotEmpty(selector, additionalMessage = "") {
     let isOk = element && ("" + element.innerHTML).trim() !== "" && element.innerHTML !== null;
     let msg = isOk ? 'jest pusty' : 'nie jest pusty';
 
-    log(isOk, `Selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
+    log(isOk, wrapMessage(additionalMessage) + `Selektora ${selector} ${msg}`);
 }
 
 function attributeValue(selector, attribute, value, additionalMessage = "") {
@@ -103,7 +103,7 @@ function attributeValue(selector, attribute, value, additionalMessage = "") {
     let isOk = element && element.getAttribute(attribute) === ("" + value);
     let msg = isOk ? 'równa się' : 'nie równa się';
 
-    log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg} ${value}` + wrapMessage(additionalMessage));
+    log(isOk, wrapMessage(additionalMessage) + `Atrybut ${attribute} selektora ${selector} ${msg} ${value}`);
 }
 
 function attributeValueContains(selector, attribute, value, additionalMessage = "") {
@@ -112,7 +112,7 @@ function attributeValueContains(selector, attribute, value, additionalMessage = 
     let isOk = elValue && elValue.indexOf("" + value) >= 0;
     let msg = isOk ? 'zawiera' : 'nie zawiera';
 
-    log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg} ${value}` + wrapMessage(additionalMessage));
+    log(isOk, wrapMessage(additionalMessage) + `Atrybut ${attribute} selektora ${selector} ${msg} ${value}`);
 }
 
 function selectorExists(selector, numOf = 1, additionalMessage = "") {
@@ -128,7 +128,7 @@ function selectorExists(selector, numOf = 1, additionalMessage = "") {
         }
     }
 
-    log(result, message + wrapMessage(additionalMessage));
+    log(result, wrapMessage(additionalMessage) + message);
 }
 
 function selectorsExists(...elements) {
@@ -160,7 +160,7 @@ function computedStyle(selector, name, value, additionalMessage) {
         msg = `jest ustawiony na`;
     }
 
-    log(isOk, `Style ${name} selektora ${selector} ${msg} ${value}` + wrapMessage(additionalMessage));
+    log(isOk, wrapMessage(additionalMessage) + `Style ${name} selektora ${selector} ${msg} ${value}`);
 }
 
 
@@ -212,8 +212,14 @@ function cz3NzLWJhc2ljcy9iYXNpYy0zLmh0bWw() {
 addEventListener('DOMContentLoaded', () => {
     init();
     let location = window.location.pathname;
-    let start = location.indexOf('pracownia-stron/');
-    let path = btoa(location.substring(start + 16, 130));
+    let start = location.lastIndexOf('pracownia-stron/');
+    let length = 16;
+    if (location.lastIndexOf('pracownia-stron-master/') >= 0) {
+        start = location.lastIndexOf('pracownia-stron-master/');
+        length += 7;
+    }
+    console.dir(start, location.substring(start + length, 130));
+    let path = btoa(location.substring(start + length, 130));
     let fname = 'cz'+path.substring(1, path.length - 1);
 
     console.dir(fname);

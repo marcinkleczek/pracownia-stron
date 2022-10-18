@@ -23,9 +23,9 @@
     document.addEventListener('DOMContentLoaded', () => {
         init();
         log(true, "Sprawdzanie struktury");
-        selectorDontExits('ol', "To nie jest lista OL");
-        selectorDontExits('ul', "To nie jest lista UL");
-        selectorDontExits('li', "Elementy nie są tworzone za pomocą li");
+        selectorDontExists('ol', "To nie jest lista OL");
+        selectorDontExists('ul', "To nie jest lista UL");
+        selectorDontExists('li', "Elementy nie są tworzone za pomocą li");
         selectorExists('dl', 1, "Musisz stworzyć listę");
         selectorExists('dt', 3, "Lista powinna zawierać 3 elementy");
         selectorExists('dd', 3, "Lista powinna zawierać 3 elementy");
