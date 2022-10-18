@@ -9,6 +9,9 @@
 let results = null;
 
 function init() {
+    if (results !== null) {
+        return;
+    }
     results = document.createElement('div');
     results.id = 'results';
     document.body.appendChild(results);
@@ -57,7 +60,7 @@ function selectorTextContains(selector, text, additionalMessage) {
     log(isOk, `${selector} ${msg} ${text} ` + wrapMessage(additionalMessage));
 }
 
-function selectorDontExits(selector, additionalMessage = "") {
+function selectorDontExists(selector, additionalMessage = "") {
     let elements = document.querySelectorAll(selector);
     let isOk = elements.length === 0;
 
@@ -79,6 +82,13 @@ function attributeExists(selector, attribute, additionalMessage = "") {
 
     log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
 }
+function attributeDontExists(selector, attribute, additionalMessage = "") {
+    let element = document.querySelector(selector);
+    let isOk = element && !element.hasAttribute(attribute);
+    let msg = isOk ? 'istnieje' : 'nie istnieje';
+
+    log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg}` + wrapMessage(additionalMessage));
+}
 
 function innerHTMLnotEmpty(selector, additionalMessage = "") {
     let element = document.querySelector(selector);
@@ -92,6 +102,15 @@ function attributeValue(selector, attribute, value, additionalMessage = "") {
     let element = document.querySelector(selector);
     let isOk = element && element.getAttribute(attribute) === ("" + value);
     let msg = isOk ? 'równa się' : 'nie równa się';
+
+    log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg} ${value}` + wrapMessage(additionalMessage));
+}
+
+function attributeValueContains(selector, attribute, value, additionalMessage = "") {
+    let element = document.querySelector(selector);
+    let elValue = element && element.getAttribute(attribute);
+    let isOk = elValue && elValue.indexOf("" + value) >= 0;
+    let msg = isOk ? 'zawiera' : 'nie zawiera';
 
     log(isOk, `Atrybut ${attribute} selektora ${selector} ${msg} ${value}` + wrapMessage(additionalMessage));
 }
@@ -115,3 +134,90 @@ function selectorExists(selector, numOf = 1, additionalMessage = "") {
 function selectorsExists(...elements) {
     elements.forEach(element => selectorExists(element));
 }
+
+
+// https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+function hexToRgb(hex) {
+    let bigint = parseInt(hex, 16);
+    let r = (bigint >> 16) & 255;
+    let g = (bigint >> 8) & 255;
+    let b = bigint & 255;
+
+    return r + "," + g + "," + b;
+}
+
+function computedStyle(selector, name, value, additionalMessage) {
+    let isOk = false;
+    let element = document.querySelector(selector);
+    if (!element) {
+        log(false, `Element ${selector} nie istnieje`);
+        return;
+    }
+    let style = getComputedStyle(element);
+    let msg = `jest ustawiony na ${style[name]} zamiast`;
+    if (style[name] === value) {
+        isOk = true;
+        msg = `jest ustawiony na`;
+    }
+
+    log(isOk, `Style ${name} selektora ${selector} ${msg} ${value}` + wrapMessage(additionalMessage));
+}
+
+
+function cz3NzLXRleHQvdGV4dC0xLmh0bWw() {
+    computedStyle('.color-red', 'color', 'rgb(255, 0, 0)');
+    computedStyle('#backgr', 'color', 'rgb(255, 255, 255)');
+    computedStyle('#backgr', 'backgroundColor', 'rgb(255, 0, 0)');
+    computedStyle('.fsize', 'fontSize', '25px');
+    computedStyle('.fsize-em', 'fontSize', '3 rem');
+
+    computedStyle('h1', 'text-align', 'right');
+    computedStyle('h2', 'text-align', 'left');
+    computedStyle('h3', 'text-align', 'center');
+    computedStyle('h4', 'text-align', 'justify');
+}
+
+function cz3NzLWJhc2ljcy9iYXNpYy0xLmh0bWw() {
+    computedStyle('p:nth-of-type(1)', 'color', 'rgb(255, 0, 0)', 'Zły kolor tekstu');
+    computedStyle('p:nth-of-type(1)', 'backgroundColor', 'rgb(255, 255, 0)', 'Zły kolor tła');
+    attributeValueContains('p:nth-of-type(1)', 'style', 'color:', 'Style powinny być określone w atrybucie');
+    attributeValueContains('p:nth-of-type(1)', 'style', 'background-color:', 'Style powinny być określone w atrybucie');
+    attributeValueContains('h3', 'style', 'font-size:', 'Style powinny być określone w atrybucie');
+    attributeValueContains('blockquote', 'style', 'padding', 'Określ odstępy');
+    attributeValueContains('blockquote', 'style', 'background', 'Określ tło');
+    attributeValueContains('footer', 'style', 'font-family', 'Określ czcionkę');
+    attributeValueContains('footer', 'style', 'font-style', 'Tekst winien być pochylony');
+    attributeValueContains('footer', 'style', 'italic', 'Tekst winien być pochylony');
+    attributeValueContains('footer', 'style', 'color', 'Kolor zielony!');
+}
+
+function cz3NzLWJhc2ljcy9iYXNpYy0yLmh0bWw() {
+    attributeDontExists('p', 'style', 'Style nie mogą być nadane inline');
+    computedStyle('p', 'color', 'rgb(255, 0, 0)', 'Kolor ma być czerwony');
+    computedStyle('p', 'backgroundColor', 'rgb(255, 255, 0)', 'Kolor tła ma być żółty');
+    computedStyle('h3', 'fontSize', '40px', 'Wielkość tekstu 40px');
+    computedStyle('blockquote', 'padding', '30px', 'Wielkość odstępu 30px');
+    computedStyle('blockquote', 'backgroundColor', 'rgb(238, 238, 238)', 'Kolor tła #eee');
+    computedStyle('footer', 'fontStyle', 'italic', 'Tekst ma być pochylony');
+    computedStyle('footer', 'color', 'rgb(0, 128, 0)', 'Tekst ma być zielony');
+}
+
+function cz3NzLWJhc2ljcy9iYXNpYy0zLmh0bWw() {
+    selectorExists('link[href="basic.css"]', 1, 'Utwórz link do pliku basic.css');
+    selectorExists('link[rel="stylesheet"]', 2, 'Utwórz link do pliku basic.css');
+    selectorDontExists('style', 'Nie może istnieć znacznik style');
+    cz3NzLWJhc2ljcy9iYXNpYy0yLmh0bWw();
+}
+
+addEventListener('DOMContentLoaded', () => {
+    init();
+    let location = window.location.pathname;
+    let start = location.indexOf('pracownia-stron/');
+    let path = btoa(location.substring(start + 16, 130));
+    let fname = 'cz'+path.substring(1, path.length - 1);
+
+    console.dir(fname);
+    if (typeof window[fname] === 'function') {
+        window[fname]();
+    }
+});
