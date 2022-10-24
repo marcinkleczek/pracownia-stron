@@ -93,3 +93,25 @@ data::after {
     margin-left: 10px;
     content: attr(value);
 }
+
+body.hgroup hgroup {
+    text-align: left;
+    padding-left: 16px;
+    border-left: 10px solid #ddd;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+body.hgroup hgroup h1 {
+    margin-bottom: 0;
+    line-height: 90%;
+    color: #666;
+}
+
+body.hgroup hgroup p {
+    margin: 0;
+    font-weight: bold;
+    color: #aaa;
+}
+
