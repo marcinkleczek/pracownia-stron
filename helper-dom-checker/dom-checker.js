@@ -209,6 +209,98 @@ function cz3NzLWJhc2ljcy9iYXNpYy0zLmh0bWw() {
     cz3NzLWJhc2ljcy9iYXNpYy0yLmh0bWw();
 }
 
+function cz3NzLXNlbGVjdG9ycy9zZWxlY3RvcnMtMS5odG1() {
+    // let stylesheet = getStyleSheetToCheck();
+    cssRuleExists('*');
+    cssRuleExists('p', 'Określ wygląd dla paragrafu.');
+    cssRuleDontExists('h2', 'Nie określaj styli dla h2 bezpośrednio');
+    cssRuleExists("p a", "Odnośnik w paragrafie powinien być określony");
+    cssRuleDontExists("p > a", "Nie określamy bezpośredniego rodzica dla paragrafu");
+}
+
+function cz3NzLXNlbGVjdG9ycy9zZWxlY3RvcnMtMy5odG1() {
+    cssRuleExists(".row1 td:first-child");
+    cssRuleExists(".row2 td:nth-child(3)");
+    cssRuleExists(".row4 td:nth-child(3n)");
+    computedStyle(".row3 td:nth-child(3)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row3 td:nth-child(7)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row3 td:nth-child(8)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row5 td:nth-child(2)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row5 td:nth-child(4)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row5 td:nth-child(6)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row5 td:nth-child(8)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row6 td:nth-child(1)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row6 td:nth-child(5)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row6 td:nth-child(9)", "background-color", "rgb(255, 0, 0)");
+    cssRuleExists(".row7 td:nth-child(3n+2)");
+    computedStyle(".row7 td:nth-child(5)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row8 td:nth-child(2)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row8 td:nth-child(4)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row8 td:nth-child(6)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row8 td:nth-child(8)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row8 td:nth-child(10)", "background-color", "rgb(255, 0, 0)");
+    cssRuleExists(".row9 td:nth-child(2n+4)");
+    cssRuleExists(".row10 td:last-child");
+    computedStyle(".row10 td:nth-child(10)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row11 td:nth-child(8)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row12 td:nth-child(8)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row12 td:nth-child(7)", "background-color", "rgb(255, 0, 0)");
+    computedStyle(".row12 td:nth-child(6)", "background-color", "rgb(255, 0, 0)");
+}
+
+function cz3NzLWZsZXhib3gvZmxleGJveC0xLmh0bWw() {
+    document.querySelectorAll('.container').forEach(c => {
+        c.setAttribute('title', c.classList.toString());
+    })
+}
+
+function getStyleSheetToCheck() {
+    for (let i = 0; i < document.styleSheets.length; i++ ) {
+        try {
+            let rules = document.styleSheets[i].cssRules;
+            if (rules[0] !== undefined && rules[0]?.cssText.indexOf('.skip-this-file') !== 0) {
+                return document.styleSheets[i]
+            }
+        } catch(e) {}
+    }
+
+    return null;
+}
+
+function cssRuleDontExists(selector, additionalMessage = "") {
+    let stylesheet = getStyleSheetToCheck();
+    let isOk = true;
+    for(let rule of [...stylesheet.cssRules]) {
+        console.dir(selector, rule.selectorText);
+        if (rule.selectorText === selector) {
+            isOk = false;
+            break;
+        }
+    }
+
+    let msg = isOk ? 'nie istnieje/nie istnieją' : 'istnieje/istnieją a nie powinny'
+
+    log(isOk, additionalMessage ? wrapMessage(additionalMessage) : `Style dla ${selector} ${msg}`);
+}
+
+
+function cssRuleExists(selector, additionalMessage = "") {
+    let stylesheet = getStyleSheetToCheck();
+    let isOk = false;
+    if (stylesheet) {
+        for(let rule of [...stylesheet.cssRules]) {
+            if (rule.selectorText === selector) {
+                isOk = true;
+                break;
+            }
+        }
+    }
+
+    let msg = isOk ? 'istnieje/istnieją' : 'nie istnieje/nie istnieją';
+
+    log(isOk, additionalMessage ? wrapMessage(additionalMessage) : `Style dla ${selector} ${msg}`);
+}
+
 addEventListener('DOMContentLoaded', () => {
     init();
     let location = window.location.pathname;
