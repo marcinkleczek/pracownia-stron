@@ -1,0 +1,72 @@
+.skip-this-file {}
+
+body {
+    background-color: #f1c8ff;
+}
+h1 {
+    color: #830bb4;
+    text-shadow: 2px 2px 0 #ca67f3, -2px -2px 0 #f1e5f6;
+    border-bottom: 2px solid #ca67f3;
+    padding-bottom: 0;
+    line-height: 99%;
+    padding-left: 10px;
+    margin-bottom: 30px;
+}
+.aparecium .container {
+    background-color: #a410e0;
+    border-top: 3px solid #cd54ff;
+    border-left: 3px solid #cd54ff;
+    border-bottom: 3px solid #830bb4;
+    border-right: 3px solid #830bb4;
+    padding: 5px 5px 5px 5px;
+}
+.aparecium .container-big {
+    height: 300px;
+}
+
+.aparecium .item {
+    text-align: center;
+    border-radius: 4px;
+    background-color: #e59709;
+    outline: 2px solid black;
+    border-bottom: 3px solid #8f5e04;
+    border-right: 3px solid #8f5e04;
+    border-top: 3px solid #ffb229;
+    border-left: 3px solid #ffb229;
+}
+.upper-case {
+    text-transform: uppercase;
+}
+
+.h-100 {
+    height: 100px !important;
+}
+.h-200 {
+    height: 200px !important;
+}
+.h-500 {
+    height: 500px !important;
+}
+.w-100 {
+    width: 100px !important;
+}
+.w-200 {
+    width: 200px !important;
+}
+.w-500 {
+    width: 500px !important;
+}
+.w-130 {
+    width: 130px !important;
+}
+.w-230 {
+    width: 230px !important;
+}
+.w-440 {
+    width: 440px !important;
+}
+.w-340 {
+    width: 340px !important;
+}
+
+
