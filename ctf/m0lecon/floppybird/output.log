@@ -1,0 +1,49 @@
+Token: d2c616bdf743b49f95b269dcd4b68bfa
+SCORE: 997
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(12) "{"ok":true}
+"
+SCORE: 998
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(12) "{"ok":true}
+"
+SCORE: 999
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(12) "{"ok":true}
+"
+SCORE: 1000
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(55) "{"flag":"ptm{n3v3r_7rus7_cl13n7_s1d3_d4ta}","ok":true}
+"
+SCORE: 1001
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(55) "{"flag":"ptm{n3v3r_7rus7_cl13n7_s1d3_d4ta}","ok":true}
+"
+SCORE: 1002
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(55) "{"flag":"ptm{n3v3r_7rus7_cl13n7_s1d3_d4ta}","ok":true}
+"
+SCORE: 1003
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(55) "{"flag":"ptm{n3v3r_7rus7_cl13n7_s1d3_d4ta}","ok":true}
+"
+SCORE: 1004
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(55) "{"flag":"ptm{n3v3r_7rus7_cl13n7_s1d3_d4ta}","ok":true}
+"
+SCORE: 1005
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(55) "{"flag":"ptm{n3v3r_7rus7_cl13n7_s1d3_d4ta}","ok":true}
+"
+SCORE: 1006
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(55) "{"flag":"ptm{n3v3r_7rus7_cl13n7_s1d3_d4ta}","ok":true}
+"
+SCORE: 1007
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(55) "{"flag":"ptm{n3v3r_7rus7_cl13n7_s1d3_d4ta}","ok":true}
+"
+SCORE: 1008
+/mnt/c/Users/marcin/PhpstormProjects/pracownia-stron/ctf/m0lecon/floppybird/fake-it.php:29:
+string(41) "{"error":"Too many requests","ok":false}
+"
