@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS dojo</title>
+<!--    <link href="../helper-dom-checker/common.css" rel="stylesheet">-->
+<!--    <script src="../helper-dom-checker/dom-checker.js"></script>-->
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            color: hsl(157, 59%, 85%);
+            background-color: white;
+        }
+        footer {
+            background-color: hsl(157, 59%, 85%);
+            color: hsl(157, 59%, 15%);
+            font-family: monospace;
+            padding: 30px 30% 30px 30%;
+        }
+        h1 {
+            animation-duration: 3s;
+            animation-name: slidein;
+            animation-timing-function: linear;
+
+            line-height: 50px;
+        }
+
+        #bars {
+            height: 200px;
+            position: relative;
+        }
+        #bars div {
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 28px;
+            z-index: 12;
+
+            animation-duration: 3.5s;
+            animation-name: strips-anim;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        #bars div:nth-child(1) {
+            background-image: linear-gradient(to bottom, hsl(157, 59%, 85%), hsl(157, 59%, 75%));
+        }
+        #bars div:nth-child(2) {
+            background-image: linear-gradient(to bottom, hsl(157, 59%, 75%), hsl(157, 59%, 65%));
+            animation-delay: 200ms;
+        }
+        #bars div:nth-child(3) {
+            background-image: linear-gradient(to bottom, hsl(157, 59%, 65%), hsl(157, 59%, 55%));
+            animation-delay: 400ms;
+        }
+        #bars div:nth-child(4) {
+            background-image: linear-gradient(to bottom, hsl(157, 59%, 55%), hsl(157, 59%, 45%));
+            animation-delay: 600ms;
+        }
+        #bars div:nth-child(5) {
+            background-image: linear-gradient(to bottom, hsl(157, 59%, 45%), hsl(157, 59%, 35%));
+            animation-delay: 800ms;
+        }
+        @keyframes strips-anim {
+            0% {
+                z-index: 12;
+                top: 0;
+            }
+            49% {
+                z-index: 11;
+            }
+            50%{
+                top: 200px;
+                z-index: 2;
+            }
+            99% {
+                z-index: 2;
+            }
+            100%  {
+                top: 0;
+                z-index: 12;
+            }
+        }
+
+        a {
+            color: hsl(157, 59%, 35%);
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        ul {
+            list-style-type: lower-greek;
+            line-height: 200%;
+        }
+
+        main {
+            width: 100% !important;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        aside {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+        aside section {
+            position: absolute;
+            top: 0;
+            left: calc(100% + 240px);
+            font-size: 140px;
+            font-weight: bold;
+            font-family: monospace;
+            z-index: 20;
+            line-height: 140px;
+            -webkit-text-stroke: 3px black;
+
+            animation-duration: 8s;
+            animation-name: letters-anim;
+            animation-timing-function: ease-in;
+            animation-iteration-count: infinite;
+        }
+        aside section:nth-child(1) {
+            color: hsl(207, 59%, 65%);
+            animation-delay: 400ms;
+        }
+        aside section:nth-child(2) {
+            color: hsl(207, 59%, 65%);
+            animation-delay: 600ms;
+        }
+        aside section:nth-child(3) {
+            color: hsl(207, 59%, 65%);
+            animation-delay: 800ms;
+        }
+        aside section:nth-child(4) {
+            color: hsl(207, 59%, 65%);
+            animation-delay: 1000ms;
+        }
+        aside section:nth-child(5) {
+            color: hsl(157, 59%, 65%);
+            animation-delay: 1200ms;
+        }
+        aside section:nth-child(6) {
+            color: hsl(157, 59%, 65%);
+            animation-delay: 1400ms;
+        }
+        aside section:nth-child(7) {
+            color: hsl(157, 59%, 65%);
+            animation-delay: 1600ms;
+        }
+        aside section:nth-child(8) {
+            color: hsl(157, 59%, 65%);
+            animation-delay: 1800ms;
+        }
+        aside section:nth-child(9) {
+            color: hsl(157, 59%, 65%);
+            animation-delay: 2000ms;
+        }
+
+
+        @keyframes letters-anim {
+            0% {
+                transform: rotateZ(0deg);
+                z-index: 20;
+                left: calc(100% + 190px);
+                top: 100px;
+            }
+            12% {
+                top: 0;
+            }
+            25% {
+                transform: rotateZ(90deg);
+                top: 100px;
+                z-index: 2;
+            }
+            37% {
+                top: 0;
+            }
+            49% {
+                z-index: 20;
+            }
+            50%{
+                transform: rotateZ(180deg);
+                z-index: 0;
+                left: -100px;
+                top: 100px;
+            }
+            62% {
+                top: 000px;
+            }
+            75% {
+                transform: rotateZ(270deg);
+                top: 100px;
+            }
+            87% {
+                top: 0;
+                z-index: 0;
+            }
+            99% {
+                z-index: 0;
+            }
+            100%  {
+                top: 100px;
+                left: calc(100% + 100px);
+            }
+        }
+        #curtain {
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #statiker {
+            display: block;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            z-index: 5;
+            text-align: center !important;
+            width: 100%;
+            line-height: 150px;
+            font-size:150px;
+            font-family: monospace;
+            color: white;
+            -webkit-text-stroke: 4px white;
+            text-shadow: 0 0 20px white, 0 0 70px white;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<main>
+<div id="bars">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div id="curtain"></div>
+<section id="statiker">ZS KOCJAN</section>
+
+<aside>
+<section>O</section>
+<section>L</section>
+<section>K</section>
+<section>U</section>
+<section>S</section>
+<section>Z</section>
+</aside>
+
+</main>
+<footer>
+    <h1>Bar scroll, letter transform, z-index</h1>
+    <p>
+        Wszystkie efekty w jednym zastosowaniu. Wygląda na łatwiejsze, ale to po prostu inna technologia.
+    </p>
+    <p>
+        Wszelkie przenikania, zasłania, odbijania są zrobione zgodnie z założeniami.
+        Wychodzenie animacji poza ekran - również.
+    </p>
+    <p>
+        Poniżej linki do MDN, gdzie znajdziecie wytłumaczenie wszystkich
+        użytych CSSów.
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">@keyframes</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index">z-index</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration">animation-duration</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name">animation-name</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function">animation-timing-function</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count">animation-iteration-count</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay">animation-delay</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type">list-style-type</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke">-webkit-text-stroke</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow">text-shadow</a></li>
+        </ul>
+    </p>
+</footer>
+</body>
+</html>
