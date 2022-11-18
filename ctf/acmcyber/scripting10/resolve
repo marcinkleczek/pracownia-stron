@@ -1,0 +1,3 @@
+diff script1.txt script2.txt|grep -v "\-\-\-" 
+
+flag{honey}
