@@ -21,7 +21,16 @@ function createSelect(options) {
 	body.prepend(form);
 }
 
+function setCookies() {
+	let theme = getTheme();
+	let path = window.location.pathname;
+
+	localStorage.setItem('theme', theme);
+	localStorage.setItem('path', path);
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
+	setCookies();
 	document.querySelectorAll('style, link[rel="stylesheet"], td.op').forEach(element => element.parentNode.removeChild(element));
 	document.querySelectorAll('style, td.op').forEach(element => element.parentNode.removeChild(element));
 	document.querySelectorAll('div[align="center"]').forEach(element => element.removeAttribute('align'));
@@ -118,16 +127,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	}
 
 
-	document.addEventListener('keydown', () => {
-		let s = document.querySelector("#theme-selector select");
-		this.location = '?theme='+s.options[s.selectedIndex + 1].value;
-
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'ArrowRight') {
+			let s = document.querySelector("#theme-selector select");
+			this.location = '?theme='+s.options[s.selectedIndex + 1].value;
+		}
+		if (e.key === 'ArrowLeft') {
+			let s = document.querySelector("#theme-selector select");
+			this.location = '?theme='+s.options[s.selectedIndex - 1].value;
+		}
 	});
 });
 
 function getTheme() {
 	const urlParams = new URLSearchParams(window.location.search);
-	return urlParams.get('theme');
+	let retval = urlParams.get('theme');
+	// if (retval.contains('&')) {
+	// 	retval = 'mk.css';
+	// }
+	return retval;
 }
 
 function createThemes(themes) {
