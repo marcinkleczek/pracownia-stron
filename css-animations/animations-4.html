@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS dojo</title>
+<!--    <link href="../helper-dom-checker/common.css" rel="stylesheet">-->
+<!--    <script src="../helper-dom-checker/dom-checker.js"></script>-->
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            color: hsl(157, 59%, 85%);
+            background-color: #9df5fd;
+        }
+
+        @keyframes strips-anim {
+            0% {
+                z-index: 12;
+                top: 0;
+            }
+            49% {
+                z-index: 11;
+            }
+            50%{
+                top: 200px;
+                z-index: 2;
+            }
+            99% {
+                z-index: 2;
+            }
+            100%  {
+                top: 0;
+                z-index: 12;
+            }
+        }
+
+        main > div {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 70px;
+            width: 100px;
+            height: 100px;
+            border: 4px solid #4BC0C8;
+            background-color: #14828a;
+            top: 10%;
+            left: 20%;
+        }
+        #key1 {
+            top: 10%;
+            left: 20%;
+        }
+        #key2 {
+            top: 80%;
+            left: 10%;
+        }
+        #key3 {
+            top: 20%;
+            left: 80%;
+        }
+        #key4 {
+            top: 80%;
+            left: 70%;
+        }
+        #key5 {
+            top: 35%;
+            left: 45%;
+        }
+
+        #player {
+            animation-name: gogogo;
+            animation-duration: 7s;
+            animation-timing-function: ease-in-out;
+            /*animation-timing-function: steps(14, jump-start);*/
+            animation-iteration-count: infinite;
+            z-index: 2;
+            border-color: #830bb4;
+            background-color: #b658de;
+        }
+
+        @keyframes gogogo {
+        }
+
+    </style>
+</head>
+<body>
+
+
+<main>
+    <div id="player"></div>
+
+    <div id="key1">1</div>
+    <div id="key2">2</div>
+    <div id="key3">3</div>
+    <div id="key4">4</div>
+    <div id="key5">5</div>
+</main>
+</body>
+</html>
