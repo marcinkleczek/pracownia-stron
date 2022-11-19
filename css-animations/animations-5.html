@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS dojo</title>
+<!--    <link href="../helper-dom-checker/common.css" rel="stylesheet">-->
+<!--    <script src="../helper-dom-checker/dom-checker.js"></script>-->
+
+    <style>
+        html, body {
+            --width: 8px;
+            --shadow-color: #333;
+            --shadow-blur: 0;
+            margin: 0;
+            padding: 0;
+            color: hsl(157, 59%, 85%);
+            background-color: #9df5fd;
+        }
+
+        @keyframes shadower {
+            0%, 100% {
+                text-shadow: calc(var(--width) * -1) calc(var(--width) * -1) var(--shadow-blur) var(--shadow-color);
+            }
+            25% {
+                text-shadow: calc(var(--width) * -1) var(--width) var(--shadow-blur) var(--shadow-color);
+            }
+            50% {
+                text-shadow: var(--width) var(--width) var(--shadow-blur) var(--shadow-color);
+            }
+            75% {
+                text-shadow: var(--width) calc(var(--width) * -1) var(--shadow-blur) var(--shadow-color);
+            }
+        }
+
+        #shadow-me {
+            color: #9df5fd;
+            font-family: Courier New, monospace;
+            font-weight: bold;
+            text-align: center;
+            font-size: 50vw;
+
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            justify-content: center;
+
+            width: 100vw;
+            height: 100vh;
+
+
+            animation-name: shadower;
+            animation-timing-function: linear;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+        #adv {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: red;
+            color: white;
+            padding: 4px 20px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div id="adv">CSSonly animation!</div>
+<main>
+    <div id="shadow-me">CSS</div>
+</main>
+</body>
+</html>
