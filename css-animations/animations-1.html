@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS dojo</title>
+    <link href="../helper-dom-checker/common.css" rel="stylesheet">
+    <script src="../helper-dom-checker/dom-checker.js"></script>
+
+    <style>
+        h1 {
+            animation-duration: 3s;
+            animation-name: slidein;
+            /*animation-iteration-count: infinite;*/
+            animation-timing-function: linear;
+
+            line-height: 50px;
+        }
+
+        @keyframes slidein {
+            from {
+                margin-left: 100%;
+                width: 300%;
+                font-size: 7px;
+                color: red;
+                filter: blur(10px);
+                background-color: red;
+                content: "test"
+
+            }
+
+            to {
+                background-color: transparent;
+                margin-left: 0;
+                width: 100%;
+                font-size: 50px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<main>
+    <h1>Nagłówek pierwszego stopnia. Nie za ładny.</h1>
+    <p>
+        Test
+    </p>
+
+    <h1>Nagłówek pierwszego stopnia. Nie za ładny.</h1>
+    <p>
+        Test
+    </p>
+
+    <h1>Nagłówek pierwszego stopnia. Nie za ładny.</h1>
+    <p>
+        Test
+    </p>
+
+    <h1>Nagłówek pierwszego stopnia. Nie za ładny.</h1>
+    <p>
+        Test
+    </p>
+
+</main>
+
+
+<aside>
+    <p>Przykładowa animacja.</p>
+</aside>
+
+</body>
+</html>
