@@ -147,20 +147,28 @@ function hexToRgb(hex) {
 }
 
 function computedStyle(selector, name, value, additionalMessage) {
+    let pseudo = '';
+    if (selector.indexOf(':') >= 1) {
+        let split = selector.split(':');
+        selector = split[0];
+        pseudo = ':'+split[1];
+    }
+
     let isOk = false;
     let element = document.querySelector(selector);
     if (!element) {
         log(false, `Element ${selector} nie istnieje`);
         return;
     }
-    let style = getComputedStyle(element);
-    let msg = `jest ustawiony na ${style[name]} zamiast`;
+
+    let style = getComputedStyle(element, pseudo);
+    let msg = `jest ustawiony na &quot;${style[name]}&quot; zamiast `;
     if (style[name] === value) {
         isOk = true;
         msg = `jest ustawiony na`;
     }
 
-    log(isOk, wrapMessage(additionalMessage) + `Style ${name} selektora ${selector} ${msg} ${value}`);
+    log(isOk, wrapMessage(additionalMessage) + `Style ${name} selektora ${selector} ${msg} &quot;${value}&quot;`);
 }
 
 
@@ -216,6 +224,17 @@ function cz3NzLXNlbGVjdG9ycy9zZWxlY3RvcnMtMS5odG1() {
     cssRuleDontExists('h2', 'Nie określaj styli dla h2 bezpośrednio');
     cssRuleExists("p a", "Odnośnik w paragrafie powinien być określony");
     cssRuleDontExists("p > a", "Nie określamy bezpośredniego rodzica dla paragrafu");
+}
+
+function cz3NzLXRyYW5zaXRpb25zL3RyYW5zaXRpb24tMS5odG1() {
+    cssRuleExists('#hidden-message:hover', 'Proszę określić zachowanie hover dla h1');
+    computedStyle('#hidden-message', 'filter', 'blur(10px)', 'Filtr powinien być ustawiony dla h1');
+    cssRuleValue('#hidden-message:hover', 'filter', 'none', 'Filtr powinien być usunięty dla h1:hover');
+
+    cssRuleValue('#hidden-message:hover', 'filter', 'none', 'Filtr powinien być usunięty dla h1:hover');
+    cssRuleValue('#hidden-message:hover', 'transition-duration', '0.2s', 'Czas ustawić na .2s');
+    cssRuleValue('#hidden-message:hover', 'transition-timing-function', 'ease-in-out', 'Poprawna funkcja czasu');
+    cssRuleValue('#hidden-message:hover', 'transition-delay', '2s', 'Opóźnienie dwie sekundy');
 }
 
 function cz3NzLXNlbGVjdG9ycy9zZWxlY3RvcnMtMy5odG1() {
@@ -295,6 +314,33 @@ function cssRuleExists(selector, additionalMessage = "") {
             }
         }
     }
+
+    let msg = isOk ? 'istnieje/istnieją' : 'nie istnieje/nie istnieją';
+
+    log(isOk, additionalMessage ? wrapMessage(additionalMessage) : `Style dla ${selector} ${msg}`);
+}
+
+function getCssRule(selector) {
+    let stylesheet = getStyleSheetToCheck();
+    if (stylesheet) {
+        for(let rule of [...stylesheet.cssRules]) {
+            if (rule.selectorText === selector) {
+                return rule;
+            }
+        }
+    }
+    return null;
+}
+
+function cssRuleValue(selector, property, value, additionalMessage = "") {
+    let isOk = false;
+    let rule = getCssRule(selector);
+    if (!rule) {
+        log(false, "Nie znaleziono definicji " + selector);
+        return false;
+    }
+
+    isOk = rule.style.getPropertyValue(property) === value;
 
     let msg = isOk ? 'istnieje/istnieją' : 'nie istnieje/nie istnieją';
 
