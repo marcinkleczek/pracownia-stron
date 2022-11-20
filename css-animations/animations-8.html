@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        h1 {
+            background: rgb(255,255,255);
+            background: radial-gradient(circle, rgba(255,255,255,1) 23%, rgba(9,9,121,1) 41%, rgba(255,255,255,1) 48%);
+            background-position: 5px 0;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-size: 120px;
+            font-family: sans-serif;
+            animation-name: grad;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes grad {
+            0% {
+                background-position: 5px 0;
+            }
+            50% {
+                background-position: 511px 0;
+            }
+            100% {
+                background-position: 5px 0;
+
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>RADIAL GRADIENT</h1>
+</body>
+</html>
