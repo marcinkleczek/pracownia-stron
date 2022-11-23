@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>CSS dojo</title>
+    <!--    <link href="../helper-dom-checker/common.css" rel="stylesheet">-->
+    <!--    <script src="../helper-dom-checker/dom-checker.js"></script>-->
+
+    <style>
+        :root {
+            --height: 150px;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: hsl(205, 58%, 42%);
+        }
+        body {
+        }
+
+        a {
+            color: hsl(157, 59%, 35%);
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        main {
+            width: 100% !important;
+            margin: 0;
+            position: relative;
+        }
+
+
+        #gamechanger {
+            display: block;
+            position: absolute;
+            top: 30%;
+            left: 0;
+            z-index: 5;
+            text-align: center !important;
+            font-family: monospace;
+            height: 200px;
+            width: 100%;
+            background-image: linear-gradient(to bottom, hsl(205, 58%, 25%), hsl(221, 59%, 15%));
+        }
+
+        #gamechanger div {
+            position: absolute;
+            display: block;
+            padding-left: 0;
+            width: 50%;
+            margin-left: 25%;
+            text-align: center;
+            color: white;
+            -webkit-text-stroke: 4px white;
+            text-shadow: 0 0 20px white, 0 0 70px white;
+            line-height: 160px;
+            font-size: 160px;
+            font-weight: bold;
+
+            animation-duration: 5s;
+            animation-name: kol;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes kol {
+            0%, 100% {
+                left: -30%;
+            }
+            50% {
+                left: 30%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main id="gamechanger">
+    <div>ZSKocjan</div>
+</main>
+
+</body>
+</html>
