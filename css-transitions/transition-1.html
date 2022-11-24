@@ -14,9 +14,25 @@
         }
 
         /* poniżej nie wprowadzaj CSS */
+        ul ul {
+            display: none;
+        }
+        a:focus ~ ul {
+            display: block;
+        }
     </style>
 </head>
 <body>
+<ul>
+    <li>
+        <a tabindex="4">Test</a>
+        <ul>
+            <li>Test2</li>
+            <li>Test2</li>
+            <li>Test2</li>
+        </ul>
+    </li>
+</ul>
 
 <main id="hidden-message">
     <h1>Ukryta wiadomość!</h1>

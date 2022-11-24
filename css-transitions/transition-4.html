@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-skew=1" name="viewport">
+    <title>CSS dojo</title>
+
+    <style>
+        /* tu wprowadzaj swój kod CSS */
+        body {
+            background-color: black;
+            color: white;
+        }
+        section {
+            height: 400px;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        pre {
+            position: absolute;
+            top: 0;
+            clear: left;
+            height: 100px;
+
+
+            left: 0;
+            transition-duration: 30s;
+            transition-property: left;
+            transition-timing-function: linear;
+
+            letter-spacing: 15px;
+        }
+        section:hover pre:nth-of-type(2n) {
+            transition-duration: 20s;
+        }
+        section:hover pre {
+            transition-duration: 30s;
+            transition-property: left;
+            transition-timing-function: linear;
+            left: -1000px;
+        }
+        pre:nth-of-type(2n) {
+            color: #666;
+           animation-duration: 31s;
+        }
+        pre:nth-of-type(2n + 1) {
+            color: #888;
+            font-size: 21px;
+            animation-duration: 24s;
+        }
+        pre:nth-of-type(3n) {
+            color: #ddd;
+            font-size: 25px;
+            animation-duration: 29s;
+        }
+        pre:nth-of-type(5n) {
+            color: #eee;
+            font-size: 12px;
+            animation-duration: 35s;
+        }
+
+        pre:nth-of-type(4) {
+            font-size: 32px;
+            animation-duration: 24s;
+        }
+
+        pre:nth-of-type(1) { top: 20px; font-size: 24px;  }
+        pre:nth-of-type(2) { top: 33px; font-size: 13px;  }
+        pre:nth-of-type(3) { top: 44px; font-size: 11px;  }
+        pre:nth-of-type(4) { top: 55px; font-size: 28px;  }
+        pre:nth-of-type(5) { top: 66px; font-size: 33px;  }
+        pre:nth-of-type(6) { top: 77px; font-size: 31px;  }
+        pre:nth-of-type(7) { top: 88px; font-size: 25px;  }
+        pre:nth-of-type(8) { top: 99px; font-size: 29px;  }
+        pre:nth-of-type(9) { top: 110px; font-size: 14px;  }
+        pre:nth-of-type(10) { top: 120px; font-size: 18px;  }
+        pre:nth-of-type(11) { top: 130px; font-size: 24px;  }
+        pre:nth-of-type(12) { top: 140px; font-size: 41px;  }
+        pre:nth-of-type(13) { top: 150px; font-size: 11px;  }
+        pre:nth-of-type(14) { top: 160px; font-size: 14px;  }
+        pre:nth-of-type(15) { top: 153px; font-size: 24px;  }
+        pre:nth-of-type(16) { top: 144px; font-size: 21px;  }
+        pre:nth-of-type(17) { top: 132px; font-size: 36px;  }
+        pre:nth-of-type(18) { top: 125px; font-size: 22px;  }
+        pre:nth-of-type(19) { top: 113px; font-size: 17px;  }
+        pre:nth-of-type(20) { top: 14px; font-size: 19px;  }
+        pre:nth-of-type(21) { top: 24px; font-size: 19px;  }
+        pre:nth-of-type(22) { top: 39px; font-size: 19px;  }
+        pre:nth-of-type(23) { top: 48px; font-size: 19px;  }
+        pre:nth-of-type(24) { top: 51px; font-size: 19px;  }
+
+        #banner {
+            margin-top: 80px;
+            width: 100%;
+            line-height: 100px;
+            text-align: center;
+            z-index: 10;
+            font-family: sans-serif;
+            font-size: 90px;
+            font-variant-caps: petite-caps;
+        }
+        /* poniżej nie wprowadzaj CSS */
+    </style>
+</head>
+<body>
+
+<main>
+
+<section class="no-margin">
+    <div id="banner">Estrella De La Noche</div>
+<pre>.    ..            .     .         .      .      .    .  .      .           .        . .       .      .     .      .      .    .   .      .      .    .  .      . .        . .     .      .           .        .          .      .     .      .      .    .  .      .   . .    .              .    .         .          .</pre>
+<pre>     <!--&#9733;-->   .    ..            .   .      .      .    .  .      .           .        . .        .          . .          .      .     .      .      .    .  .      .    .    ..     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    .    .     .       .    .      .      .    .  .      .           .        . .       .       .         . .          .      .     .      .    .      .      .    .  .      .           .        . .        .    .  .      .       .      .          .      .     .      .      .    .  .      .   .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.  .  .  .       .      .    .      .      .    .  .      .           .        . .       .      .      .          .      .     .      .      .    .  .      .       .     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    ..            .     .         .      .      .    .  .      .           .        . .       .      .     .      .      .    .   .      .      .    .  .      .           .        . .     .      .           .        .          .      .     .      .      .    .  .      .   . .    .              .    .         .          .</pre>
+<pre>       .    ..            .   .      .      .    .  .      .           .        . .        .          . .          .      .     .      .      .    .  .      .    .    ..     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    .    .     .       .    .      .      .    .  .      .           .        . .       .       .         . .          .      .     .      .    .      .      .    .  .      .           .        . .        .    .  .      .       .      .          .      .     .      .      .    .  .      .   .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.  .  .  .       .     .    .      .      .    .  .      .           .        . .       .      .      .          .      .     .      .      .    .  .      .       .     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    ..            .     .         .      .      .    .  .      .           .        . .       .      .     .      .      .    .   .      .      .    .  .      .           .        . .     .      .           .        .          .      .     .      .      .    .  .      .   . .    .              .    .         .          .</pre>
+<pre>       .    ..            .   .      .      .    .  .      .           .        . .        .          . .          .      .     .      .      .    .  .      .    .    ..     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    .    .     .       .    .      .      .    .  .      .           .        . .       .       .         . .          .      .     .      .    .      .      .    .  .      .           .        . .        .    .  .      .       .      .          .      .     .      .      .    .  .      .   .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.  .  .  .       .     .    .      .      .    .  .      .           .        . .       .      .      .          .      .     .      .      .    .  .      .       .     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    ..            .     .         .      .      .    .  .      .           .        . .       .      .     .      .      .    .   .      .      .    .  .      .           .        . .     .      .           .        .          .      .     .      .      .    .  .      .   . .    .              .    .         .          .</pre>
+<pre>       .    ..            .   .      .      .    .  .      .           .        . .        .          . .          .      .     .      .      .    .  .      .    .    ..     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    .    .     .       .    .      .      .    .  .      .           .        . .       .       .         . .          .      .     .      .    .      .      .    .  .      .           .        . .        .    .  .      .       .      .          .      .     .      .      .    .  .      .   .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.  .  .  .       .     .    .      .      .    .  .      .           .        . .       .      .      .          .      .     .      .      .    .  .      .       .     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    ..            .     .         .      .      .    .  .      .           .        . .       .      .     .      .      .    .   .      .      .    .  .      .           .        . .     .      .           .        .          .      .     .      .      .    .  .      .   . .    .              .    .         .          .</pre>
+<pre>       .    ..            .   .      .      .    .  .      .           .        . .        .          . .          .      .     .      .      .    .  .      .    .    ..     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    .    .     .       .    .      .      .    .  .      .           .        . .       .       .         . .          .      .     .      .    .      .      .    .  .      .           .        . .        .    .  .      .       .      .          .      .     .      .      .    .  .      .   .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.  .  .  .       .     .    .      .      .    .  .      .           .        . .       .      .      .          .      .     .      .      .    .  .      .       .     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    ..            .     .         .      .      .    .  .      .           .        . .       .      .     .      .      .    .   .      .      .    .  .      .           .        . .     .      .           .        .          .      .     .      .      .    .  .      .   . .    .              .    .         .          .</pre>
+<pre>       .    ..            .   .      .      .    .  .      .           .        . .        .          . .          .      .     .      .      .    .  .      .    .    ..     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.    .    .     .       .    .      .      .    .  .      .           .        . .       .       .         . .          .      .     .      .    .      .      .    .  .      .           .        . .        .    .  .      .       .      .          .      .     .      .      .    .  .      .   .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+<pre>.  .  .  .       .     .    .      .      .    .  .      .           .        . .       .      .      .          .      .     .      .      .    .  .      .       .     .      .      .    .  .      .           .        . .    .              .    .         .          .</pre>
+</section>
+
+</main>
+
+</body>
+</html>
