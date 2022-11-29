@@ -45,8 +45,8 @@ main > img {
     list-style-type: none;
     display: block;
     position: absolute;
+    overflow: scroll;
     top: 0;
-    overflow: hidden;
     right: 0;
     max-width: 25vw;
     min-width: 20vw;
