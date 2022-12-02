@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tables dojo</title>
+    <link href="../helper-dom-checker/common.css" rel="stylesheet">
+    <script src="../helper-dom-checker/dom-checker.js"></script>
+    <style>
+        :root {
+            font-family: Garamond, sans-serif;
+            font-size: 16px;
+            line-height: 1.5rem;
+        }
+        * {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .container .col-12 {
+            width: 100%;
+        }
+
+        @media screen and (min-width: 800px) {
+            .container .col-md-4 {
+                width: 30%;
+                margin-left: 1.5%;
+                margin-right: 1.5%;
+                float: left;
+                clear: none;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+<!-- Wyłącz ten komentarz i użyj poniższego HTMLa -->
+<main class="container">
+
+<div class="col-12 col-md-4 user-card">
+    <div class="logo">
+        <img src="https://placekitten.com/151/151" alt="Kitten">
+    </div>
+    <div class="username">
+        Zbyszko z Bogdańca
+    </div>
+    <div class="bio">
+        Jestem pierwszoplanową postacią z powieści Henryka Sienkiewicza. Brałem udział w bitwie pod Grunwaldem, po której wróciłem do rodowego Bogdańca.
+        Za młodu szalony składałem obietnice, które trudno dotrzymać. Na koniec wygranko było moje..
+    </div>
+</div>
+<div class="col-12 col-md-4 user-card">
+    <div class="logo">
+        <img src="https://placekitten.com/149/149" alt="Kitten">
+    </div>
+    <div class="username">
+        Janko Walski
+    </div>
+    <div class="bio">
+        Jestem postacią wymyśloną, zajmuję się sprzedażą osobistą kosmetyków najwyższej jakości. W ludziach cenię sobie szczerość i otwartość.
+        W wolnych chwilach zajmuję się szydełkowaniem i składaniem długopisów na akord. BTW chcesz coś z ajwonu?
+    </div>
+</div>
+<div class="col-12 col-md-4 user-card">
+    <div class="logo">
+        <img src="https://placekitten.com/107/107" alt="Kitten">
+    </div>
+    <div class="username">
+        Czterech jeźdźców
+    </div>
+    <div class="bio">
+        Apokalipsa będzie nasza. Oczekuj nas o wschodzie słońca, nadchodzących od strony Mordoru. Nie możemy się doczekać spotkania, pozdrawiamy cieplutko.
+    </div>
+</div>
+
+</main>
+<!-- poniżej tej linijki nie ruszaj -->
+<aside style="clear: both">
+    <h1>Proszę stworzyć poniższy efekt</h1>
+    <img src="element-1.png" alt="Podgląd efektu">
+</aside>
+
+</body>
+</html>
