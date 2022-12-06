@@ -25,16 +25,18 @@ body {
 }
 
 main {
-    width: 80vw;
+    /* width: 80vw; */
     height: 80vh;
     margin: 10vh 10vw;
     color: white;
     /*font-size: 2rem;*/
     background-color: #3E32A2;
     padding: 2vh 2vw;
+    overflow: scroll
 }
 main pre {
     font: normal 38px "C64 Pro Mono Local", verdana, helvetica, sans-serif;
+    background-color: #3E32A2;
 }
 
 .rotate0 {
