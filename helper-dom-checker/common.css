@@ -1,5 +1,7 @@
 .skip-this-file {}
 
+@import "debug.css";
+
 html {
     max-width: 80vw;
     padding: 1rem;
@@ -86,4 +88,3 @@ table.pseudo-selectors tr th:first-child {
     /*width: 50%;*/
 }
 
-@import "debug.css";

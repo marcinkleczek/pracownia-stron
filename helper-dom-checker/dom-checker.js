@@ -53,7 +53,25 @@ function selectorTextContains(selector, text, additionalMessage) {
         if (element && (element.type === 'textarea' || element.type === 'input')) {
             elementText = element.value;
         }
-        isOk = elementText.indexOf(text) >= 0;
+        isOk = elementText.toLowerCase().indexOf(text.toLowerCase()) >= 0;
+    }
+    let msg = isOk ? "zawiera" : "nie zawiera";
+
+    log(isOk, wrapMessage(additionalMessage) + `${selector} ${msg} ${text} `);
+}
+
+function anySelectorTextContains(selector, text, additionalMessage) {
+    let elements = document.querySelectorAll(selector);
+    let isOk = false;
+    for(let element of elements) {
+        let elementText = element && element.innerText;
+        if (element && (element.type === 'textarea' || element.type === 'input')) {
+            elementText = element.value;
+        }
+        isOk = elementText.toLowerCase().indexOf(text.toLowerCase()) >= 0;
+        if (isOk) {
+            break;
+        }
     }
     let msg = isOk ? "zawiera" : "nie zawiera";
 
@@ -131,8 +149,67 @@ function selectorExists(selector, numOf = 1, additionalMessage = "") {
     log(result, wrapMessage(additionalMessage) + message);
 }
 
+function selectorMinNum(selector, numOf = 1, additionalMessage = "") {
+    let elements = document.querySelectorAll(selector);
+    let result = false;
+    let message = (numOf > 1 ? "Są: " : "Jest: ") + selector + (numOf > 1 ? ` (${numOf})` : "");
+
+    if (elements && elements.length >= numOf) {
+        result = true;
+    } else {
+        message = "Element(y) " + selector + " niepoprawna ilość " + elements.length + " zamiast min. " + numOf + "";
+    }
+
+    log(result, wrapMessage(additionalMessage) + message);
+}
+
+
 function selectorsExists(...elements) {
     elements.forEach(element => selectorExists(element));
+}
+
+function bodyContainsText(text, additionalMessage) {
+    let result = document.body.innerText.toLowerCase().indexOf(text.toLowerCase()) >= 0;
+    let message = (result ? "Zawiera tekst: " : "Nie zawiera tekstu: " ) + text;
+
+    log(result, wrapMessage(additionalMessage) + message);
+}
+
+function filenameContainsText(text, additionalMessage = "") {
+    let result = window.location.href.toLowerCase().indexOf(text.toLowerCase()) >= 0;
+    let message = (result ? "Nazwa pliku zawiera: " : "Nazwa pliku nie zawiera: " ) + text;
+
+    log(result, wrapMessage(additionalMessage) + message);
+}
+
+function cssFilename(filename, additionalMessage = "") {
+    let styles = document.querySelectorAll('link[rel="stylesheet"]');
+    let result = false;
+    for (let s of styles) {
+        let href = s.getAttribute('href');
+        if (href === filename) {
+            result = true;
+            break;
+        }
+    }
+    // let result = window.location.href.toLowerCase().indexOf(text.toLowerCase()) >= 0;
+    let message = (result ? "Nazwa pliku CSS: " : "Nazwa pliku CSS: " ) + filename;
+
+    log(result, wrapMessage(additionalMessage) + message);
+}
+
+function checkCharset(standard, additionalMessage = "") {
+    let result = document.querySelector('meta[charset]')?.getAttribute("charset")?.toLowerCase() === standard.toLowerCase();
+    let message = (result ? "Poprawnie określone kodowanie " : "Niepoprawnie określone kodowanie " ) + standard;
+
+    log(result, wrapMessage(additionalMessage) + message);
+}
+
+function titleEqual(title, additionalMessage = "") {
+    let result = document.querySelector('title')?.innerText === title;
+    let message = (result ? "Poprawnie określony tytuł " : "Niepoprawnie określony tytuł " ) + title;
+
+    log(result, wrapMessage(additionalMessage) + message);
 }
 
 
@@ -164,6 +241,56 @@ function computedStyle(selector, name, value, additionalMessage) {
     let style = getComputedStyle(element, pseudo);
     let msg = `jest ustawiony na &quot;${style[name]}&quot; zamiast `;
     if (style[name] === value) {
+        isOk = true;
+        msg = `jest ustawiony na`;
+    }
+
+    log(isOk, wrapMessage(additionalMessage) + `Style ${name} selektora ${selector} ${msg} &quot;${value}&quot;`);
+}
+
+function computedStyleDiff(selector, name, value, additionalMessage) {
+    let pseudo = '';
+    if (selector.indexOf(':') >= 1) {
+        let split = selector.split(':');
+        selector = split[0];
+        pseudo = ':'+split[1];
+    }
+
+    let isOk = false;
+    let element = document.querySelector(selector);
+    if (!element) {
+        log(false, `Element ${selector} nie istnieje`);
+        return;
+    }
+
+    let style = getComputedStyle(element, pseudo);
+    let msg = `jest równy &quot;${style[name]}&quot; zamiast być inny niż`;
+    if (style[name] !== value) {
+        isOk = true;
+        msg = `jest ustawiony na`;
+    }
+
+    log(isOk, wrapMessage(additionalMessage) + `Style ${name} selektora ${selector} ${msg} &quot;${value}&quot;`);
+}
+
+function computedStyleContains(selector, name, value, additionalMessage) {
+    let pseudo = '';
+    if (selector.indexOf(':') >= 1) {
+        let split = selector.split(':');
+        selector = split[0];
+        pseudo = ':'+split[1];
+    }
+
+    let isOk = false;
+    let element = document.querySelector(selector);
+    if (!element) {
+        log(false, `Element ${selector} nie istnieje`);
+        return;
+    }
+
+    let style = getComputedStyle(element, pseudo);
+    let msg = `jest ustawiony na &quot;${style[name]}&quot; zamiast `;
+    if ((''+style[name]).indexOf(value) >= 0) {
         isOk = true;
         msg = `jest ustawiony na`;
     }
@@ -331,7 +458,30 @@ function getCssRule(selector) {
     }
     return null;
 }
+function cssRulesDeclarationExists(propValues, additionalMessage = "") {
+    let stylesheet = getStyleSheetToCheck();
+    let isOk = false;
+    let num = Object.values(propValues).length;
 
+    if (stylesheet && num > 0) {
+        for(let rule of [...stylesheet.cssRules]) {
+            console.dir(rule.selectorText);
+            let matches = 0;
+            for (let k of Object.keys(propValues)) {
+                console.dir((''+propValues[k]).toLowerCase(),(rule.style[k]).toLowerCase());
+                if ((''+propValues[k]).toLowerCase() === (rule.style[k]).toLowerCase()) {
+                    matches++;
+                }
+            }
+            console.dir('m'+matches+'==='+num);
+            if (matches === num) {
+                isOk = true;
+            }
+        }
+    }
+
+    log(isOk,  wrapMessage(additionalMessage));
+}
 function cssRuleValue(selector, property, value, additionalMessage = "") {
     let isOk = false;
     let rule = getCssRule(selector);
@@ -345,6 +495,36 @@ function cssRuleValue(selector, property, value, additionalMessage = "") {
     let msg = isOk ? 'istnieje/istnieją' : 'nie istnieje/nie istnieją';
 
     log(isOk, additionalMessage ? wrapMessage(additionalMessage) : `Style dla ${selector} ${msg}`);
+}
+
+function checkForCommonHTMLErrors() {
+    // title
+    if (document.querySelectorAll('head title').length !== 1) {
+        log(false, "Musi istnieć jeden element title w head");
+    }
+    // h1
+    if (document.querySelectorAll('h1').length > 1) {
+        log(false, "Musi istnieć co najwyżej jeden element h1");
+    }
+
+    // alt dla img
+    document.querySelectorAll('img').forEach((img) => {
+        if (!img.getAttribute('alt')) {
+            log(false, "Wszystkie obrazki muszą mieć atrybut alt");
+        }
+    });
+    // type dla button / input
+    document.querySelectorAll('input, button').forEach((btn) => {
+        if (!btn.getAttribute('type')) {
+            log(false, "Wszystkie przyciski i kontrolki muszą mieć typ");
+        }
+    });
+    // name dla inputa
+    document.querySelectorAll('input').forEach((btn) => {
+        if (!btn.getAttribute('name')) {
+            log(false, "Wszystkie kontrolki muszą mieć name");
+        }
+    });
 }
 
 addEventListener('DOMContentLoaded', () => {
