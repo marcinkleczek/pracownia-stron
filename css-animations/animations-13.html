@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS dojo</title>
+<!--    <link href="../helper-dom-checker/common.css" rel="stylesheet">-->
+<!--    <script src="../helper-dom-checker/dom-checker.js"></script>-->
+
+    <!-- Author:- Thomas Trinca -->
+    <style>
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            box-sizing: content-box;
+        }
+
+        .circles {
+            width: 70vh;
+            height: 70vh;
+            display: block;
+            background: rgb(9,9,121);
+            background: radial-gradient(circle, rgba(9,9,121,.5) 0%, rgba(9,9,121,.5) 10%, rgba(255,255,255,.5) 11%, rgba(255,255,255,.5) 24%, rgba(9,9,121,.5) 25%, rgba(9,9,121,.5) 39%, rgba(255,255,255,.5) 40%, rgba(255,255,255,.5) 54%, rgba(9,9,121,.5) 55%, rgba(9,9,121,.5) 70%, rgba(255,255,255,.5) 71%, rgba(255,255,255,.5) 84%, rgba(9,9,121,.5) 85%, rgba(9,9,121,.5) 100%);
+            border-radius: 900px;
+            animation: pulse-it 6s ease-in-out infinite;
+            position: absolute;
+            left: -200px;
+            top: -1000px;
+        }
+        .circles:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+        .circles:nth-child(3) {
+            animation-delay: 3s;
+        }
+        .circles:nth-child(4) {
+            animation-delay: 4.5s;
+        }
+
+        .pulse {
+            font-family: neon, monospace;
+            color: #FB4264;
+            font-size: 4px;
+        }
+
+        @keyframes pulse-it {
+            0%,
+            100% {
+                top: 10vh;
+                left: 10vh;
+                transform: scale(100%, 100%);
+            }
+            25% {
+                top: 90vh;
+                left: 10vh;
+                transform: scale(80%, 80%);
+            }
+            50% {
+                top: 90vh;
+                left: 90vh;
+
+                transform: scale(200%, 200%)/* rotateZ(720deg)*/;
+            }
+            75% {
+                top: 10vh;
+                left: 90vh;
+
+                transform: scale(120%, 120%);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="circles"></div>
+    <div class="circles"></div>
+    <div class="circles"></div>
+    <div class="circles"></div>
+</div>
+</body>
+</html>
