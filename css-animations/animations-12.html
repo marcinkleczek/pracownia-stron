@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS dojo</title>
+<!--    <link href="../helper-dom-checker/common.css" rel="stylesheet">-->
+<!--    <script src="../helper-dom-checker/dom-checker.js"></script>-->
+
+    <!-- Author:- Thomas Trinca -->
+    <style>
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .pulse {
+            font-family: neon, monospace;
+            color: #FB4264;
+            font-size: 4px;
+            animation: pulse-it 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-it {
+            0%,
+            100% {
+                transform: scale(11400%, 11400%);
+            }
+            50% {
+                transform: scale(1100%, 1100%)/* rotateZ(720deg)*/;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="pulse">Pulse</div>
+</div>
+</body>
+</html>
