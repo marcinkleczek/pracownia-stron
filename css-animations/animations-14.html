@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS dojo</title>
+<!--    <link href="../helper-dom-checker/common.css" rel="stylesheet">-->
+<!--    <script src="../helper-dom-checker/dom-checker.js"></script>-->
+
+    <style>
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            box-sizing: content-box;
+        }
+
+        .blob {
+            width: 50vh;
+            height: 50vh;
+            animation-name: brd;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            background-image: linear-gradient(blue, navy, blueviolet);
+            margin: 10vh auto auto auto;
+            color: white;
+            font-size: 3rem;
+            text-align: center;
+            line-height: 50vh;
+            text-transform: uppercase;
+        }
+        @keyframes brd {
+            0%,
+            100% {
+                border-radius: 71% 29% 68% 32% / 69% 22% 78% 31% ;
+            }
+            25% {
+                border-radius: 71% 29% 46% 54% / 69% 37% 63% 31% ;
+
+            }
+            50% {
+                border-radius: 79% 21% 77% 23% / 82% 37% 63% 18% ;
+            }
+            75% {
+                border-radius: 35% 65% 59% 41% / 64% 65% 35% 36% ;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="blob">
+        I'm Blob.
+    </div>
+</div>
+</body>
+</html>
